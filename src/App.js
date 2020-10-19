@@ -3,11 +3,16 @@ import Terminal from 'terminal-in-react';
 import "../src/App.css"
  
 
-
 class App extends Component {
-  showMsg = () => 'Awesome! You were able to complete the first step, now type "next-task"'
-  finishMsg = () => 'Amazing! You are all complete, that was the best coding ive ever seen.'
-  render() {
+
+  showMsg() {
+    return (<div style={{color: "#247ddb" }}>Documents <br/><br/>Media<br/><br/>Projects</div>);
+  }
+  finishMsg() {
+    return (<div style={{color: "#247ddb" }}>Documents <br/><br/>Media<br/><br/>Projects</div>);
+  }
+  
+  render(){
     return (
       <div
         style={{
@@ -22,19 +27,20 @@ class App extends Component {
           color='green'
           backgroundColor='black'
           barColor='black'
-          style={{ fontWeight: "bold", fontSize: "1em" }}
+          style={{ fontWeight: "bold", fontSize: "1.3em", fontFamily: "sans-serif" }}
           commands={{
-            'open-google': () => window.open('https://www.google.com/', '_blank'),
-            start: this.showMsg,
+            openGoogle: () => window.open('https://www.google.com/', '_blank'),
+            ls: this.showMsg,
             'next-task': this.finishMsg,
             popup: () => alert('Terminal in React')
           }}
           descriptions={{
-            'open-google': 'opens google.com',
-            start: 'shows a message',
+            'opengoogle': 'opens google.com',
+            ls: 'shows a message',
             alert: 'alert', popup: 'alert'
           }}
-          msg='start coding with "start"'
+          msg='Dear soon to be hacker prodijy, Welcome to your first lesson in navigating your linux operating system. Lets begin with something basic, the "ls" command. Typing "ls" in the terminal will list all files within your current directory. Try it out for yourself!      
+          .....type "help" for a list of all commands in this terminal.'
         className="Term"/>
       </div>
     );
