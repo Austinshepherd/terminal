@@ -5,12 +5,14 @@ import "../src/App.css"
 
 class App extends Component {
 
+
   showMsg() {
     return (<div style={{color: "#247ddb" }}>Documents <br/><br/>Media<br/><br/>Projects</div>);
   }
   finishMsg() {
     return (<div style={{color: "#247ddb" }}>Documents <br/><br/>Media<br/><br/>Projects</div>);
   }
+ 
   
   render(){
     return (
@@ -29,9 +31,11 @@ class App extends Component {
           barColor='black'
           style={{ fontWeight: "bold", fontSize: "1.3em", fontFamily: "sans-serif" }}
           commands={{
-            openGoogle: () => window.open('https://www.google.com/', '_blank'),
+            open: () => window.open('https://www.google.com/', '_blank'),
+            google: () => window.open('https://www.google.com/', '_blank'),
             ls: this.showMsg,
-            'next-task': this.finishMsg,
+            cd: this.finishMsg,
+            Documents: this.finishMsg,
             popup: () => alert('Terminal in React')
           }}
           descriptions={{
