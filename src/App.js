@@ -4,7 +4,7 @@ import "../src/App.css"
 import pseudoFileSystemPlugin from 'terminal-in-react-pseudo-file-system-plugin';
 
 
-const FileSystemPlugin = pseudoFileSystemPlugin();
+const FileSystemPlugin =pseudoFileSystemPlugin("/","db",false); 
 
 class App extends Component {
 
@@ -28,30 +28,27 @@ class App extends Component {
           width: "100%"
         }}
       >
-        <Terminal
-           plugins={[
-            (FileSystemPlugin)
-           ]}
-          color='green'
-          backgroundColor='black'
-          barColor='black'
-          style={{ fontWeight: "bold", fontSize: "1.3em", fontFamily: "sans-serif" }}
-          commands={{
-            open: () => window.open('https://www.google.com/', '_blank'),
-            google: () => window.open('https://www.google.com/', '_blank'),
-            ls: this.showMsg,
-            cd: this.finishMsg,
-            Documents: this.finishMsg,
-            popup: () => alert('Terminal in React')
-          }}
-          descriptions={{
-            'opengoogle': 'opens google.com',
-            ls: 'shows a message',
-            alert: 'alert', popup: 'alert'
-          }}
-          msg='Dear (soon to be) hacker prodijy, Welcome to your first lesson in navigating your linux operating system. Lets begin with something basic, the "ls" command. Typing "ls" in the terminal will list all files within your current directory. Try it out for yourself!      
-          .....type "help" for a list of all commands in this terminal.'
-        className="Term"/>
+      <Terminal
+      plugins={[
+        FileSystemPlugin
+      ]}
+      style={{ fontWeight: "bold", fontSize: "1.3em", fontFamily: "sans-serif" }}
+  commands={{
+    open: () => window.open('https://www.google.com/', '_blank'),
+    google: () => window.open('https://www.google.com/', '_blank'),
+    ls: () => alert('Terminal in React'),
+    cd: this.finishMsg,
+    Documents: this.finishMsg,
+    popup: () => alert('Terminal in React')
+  }}
+  descriptions={{
+    'opengoogle': 'opens google.com',
+    ls: 'shows a message',
+    alert: 'alert', popup: 'alert'
+  }}
+  msg=' Greetings (soon to be) hacker prodijy, Welcome to your first lesson in navigating your linux operating system. Lets begin with something basic. Type "start" in the terminal to begin your first session, this session will not be saved so learn your commands.     
+  .....type "help" for a list of all commands in this terminal.'
+className="Term"/>
       </div>
     );
   }
